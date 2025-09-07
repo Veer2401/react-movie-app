@@ -674,14 +674,14 @@ const App = () => {
           credits={credits}
           isLoading={isCreditsLoading}
         />
-        <div className="footer">
+        {/* <div className="footer">
           <div className="footer-left">
             <h3>Made with ❤️ by <a href="https://github.com/Veer2401" target="_blank" rel="noopener noreferrer">Veer</a>. Powered by <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank" rel="noopener noreferrer">TMDB</a></h3>
           </div>
           <div className="footer-right">
             <p>Source code on <a href="https://github.com/Veer2401/React-Movie-App" target="_blank" rel="noopener noreferrer">GitHub</a></p>
           </div>
-        </div>
+        </div> */}
       </div>
     </main>
   )

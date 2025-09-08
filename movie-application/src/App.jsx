@@ -578,7 +578,7 @@ const App = () => {
       <div className='wrapper fade-in'>
         <header>
           <img 
-            src="./cinematic.png" 
+            src="./C.png" 
             alt="Hero-Banner" 
             className="w-[400px] h-[200px] cursor-pointer hover:opacity-80 transition-opacity" 
             onClick={() => window.location.reload()}

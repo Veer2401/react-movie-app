@@ -3,6 +3,7 @@ import Search from './components/Search'
 import MovieCard from './components/MovieCard';
 import Filter from './components/Filter';
 import DetailsDrawer from './components/DetailsDrawer';
+import GenreIcons from './components/GenreIcons';
 // import SongCard from './components/SongCard';
 import { updateSearchCount } from './appwrite';
 import { isProduction } from './utils/env.js';
@@ -958,6 +959,10 @@ const App = () => {
               setSelectedYears={setSelectedYears}
             />
           </div>
+          <GenreIcons 
+            selectedGenres={selectedGenres}
+            setSelectedGenres={setSelectedGenres}
+          />
           <br />
           <h1 className='search-term'> <span className='text-gradient'>{searchTerm}</span></h1>
           

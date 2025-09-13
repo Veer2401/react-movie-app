@@ -4,7 +4,6 @@ import MovieCard from './components/MovieCard';
 import Filter from './components/Filter';
 import DetailsDrawer from './components/DetailsDrawer';
 import GenreIcons from './components/GenreIcons';
-// import SongCard from './components/SongCard';
 import { updateSearchCount } from './appwrite';
 import { isProduction } from './utils/env.js';
 
@@ -923,21 +922,16 @@ const App = () => {
 
   return (
     <main>
-      {/* <div className="top-logo">
-        <img src="./cinematicX.png" alt="CinematicX" className="top-logo-image" />
-      </div> */}
       <div className="pattern" />
       <div className='wrapper fade-in'>
         <header>
           <img 
             src="./C.png" 
             alt="Hero-Banner" 
-            className="w-[400px] h-[200px] cursor-pointer hover:opacity-80 transition-opacity" 
+            className="w-[400px] h-auto cursor-pointer hover:opacity-80 transition-opacity mb-[10px]" 
             onClick={() => window.location.reload()}
             title="Click to refresh page"
           />
-          <br />
-          {/* <h1>Cinematic<span className='text-gradient'>X</span></h1> */}
           <h1>Your <span className="text-gradient">Content </span> Dictionary 🎬</h1>
           <div className="center">
             <h1 className='content-center'>Type it. Find it.</h1>
@@ -945,12 +939,12 @@ const App = () => {
           <div className="search-filter-container">
             <Search 
               searchTerm={searchTerm} 
-              setSearchTerm={setSearchTerm} 
+              setSearchTerm={setSearchTerm}
               onSuggestionSelect={() => setShowSuggestions(false)}
               showSuggestions={showSuggestions}
               setShowSuggestions={setShowSuggestions}
             />
-            <Filter 
+            <Filter
               selectedLanguages={selectedLanguages} 
               setSelectedLanguages={setSelectedLanguages}
               selectedGenres={selectedGenres}
@@ -959,16 +953,18 @@ const App = () => {
               setSelectedYears={setSelectedYears}
             />
           </div>
-          <GenreIcons 
+          <GenreIcons
+            Languages={selectedLanguages}
             selectedGenres={selectedGenres}
             setSelectedGenres={setSelectedGenres}
           />
-          <br />
-          <h1 className='search-term'> <span className='text-gradient'>{searchTerm}</span></h1>
-          
+          <h1 className='search-term'>
+            <span className='text-gradient'>{searchTerm}</span>
+          </h1>
           {/* Manual refresh button */}
           {!searchTerm && (
             <div className="refresh-indicator">
+              {/* Uncomment if you want a refresh button */}
               {/* <button
                 onClick={() => {
                   setLastRefreshTime(new Date());
@@ -985,10 +981,8 @@ const App = () => {
             </div>
           )}
         </header>
-
         <section className='all-movies'>
           <h2 className='mt-[40px]'>Movies, TV Shows & More!</h2>
-
           {isLoading ? (
             <div className="loading-spinner">
               <div className="spinner"></div>
@@ -997,9 +991,9 @@ const App = () => {
           ) : errorMessage ? (
             <div className="error-container">
               <p className='text-red-500 mb-4'>{errorMessage}</p>
-              <button 
+              <button
                 onClick={() => fetchMovies(searchTerm)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-md  transition-colors"
+                className="bg-blue-600 text-white px-4 py-2 rounded-md transition-colors"
               >
                 Retry
               </button>
@@ -1017,7 +1011,7 @@ const App = () => {
           ) : (
             <ul style={{ contain: 'layout style' }}>
               {filteredMovieList.map((item) => {
-                const key = `${item.media_type || 'movie'}-${item.id}`
+                const key = `${item.media_type || 'movie'}-${item.id}`;
                 return (
                   <MovieCard
                     key={key}
@@ -1025,7 +1019,7 @@ const App = () => {
                     isFlipped={flippedItemKey === key}
                     onCardClick={() => handleCardClick(item)}
                   />
-                )
+                );
               })}
             </ul>
           )}
@@ -1037,14 +1031,11 @@ const App = () => {
           credits={credits}
           isLoading={isCreditsLoading}
         />
-        {/* <div className="footer">
-          <div className="footer-left">
-            <h3>Made with ❤️ by <a href="https://github.com/Veer2401" target="_blank" rel="noopener noreferrer">Veer</a>. Powered by <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank" rel="noopener noreferrer">TMDB</a></h3>
-          </div>
-          <div className="footer-right">
-            <p>Source code on <a href="https://github.com/Veer2401/React-Movie-App" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-          </div>
-        </div> */}
+        <div className="footer footer-center">
+          <h2>Made with ❤️ by <a href="https://github.com/Veer2401" target="_blank" rel="noopener noreferrer">Veer </a></h2>
+          <p>Powered by <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
+          <p>Source code on <a href="https://github.com/Veer2401/React-Movie-App" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        </div>
       </div>
     </main>
   )

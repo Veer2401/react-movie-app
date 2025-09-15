@@ -1031,11 +1031,11 @@ const App = () => {
           credits={credits}
           isLoading={isCreditsLoading}
         />
-        <div className="footer footer-center">
+        {/* <div className="footer footer-center">
           <h2>Made with ❤️ by <a href="https://github.com/Veer2401" target="_blank" rel="noopener noreferrer">Veer </a></h2>
           <p>Powered by <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a></p>
           <p>Source code on <a href="https://github.com/Veer2401/React-Movie-App" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-        </div>
+        </div> */}
       </div>
     </main>
   )

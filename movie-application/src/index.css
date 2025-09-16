@@ -87,7 +87,7 @@
 
   /* Genre Icons Styles */
   .genre-icons-container {
-    @apply flex justify-center mt-4 sm:mt-6;
+    @apply flex justify-center mt-4 sm:mt-6 overflow-x-auto hide-scrollbar px-2;
   }
 
   .genre-icons {
@@ -144,9 +144,13 @@
 
   /* Mobile adjustments for genre icons */
   @media (max-width: 640px) {
+    .genre-icons-container { width: 100%; }
     .genre-icons {
-      @apply gap-2;
+      @apply gap-2 justify-start;
       max-width: 100%;
+      min-width: max-content;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
     }
 
     .genre-icon {
@@ -349,6 +353,9 @@
       width: max-content;
       margin-top: 0.5rem;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      max-height: calc(100vh - 6rem);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .filter-options {

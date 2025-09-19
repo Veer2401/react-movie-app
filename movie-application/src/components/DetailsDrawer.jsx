@@ -60,7 +60,7 @@ const DetailsDrawer = ({ isOpen, onClose, item, credits, isLoading }) => {
     >
       {/* Drawer without backdrop */}
       <aside
-        className={`absolute right-0 top-0 h-full w-full sm:w-[420px] md:w-[520px] bg-dark-100 shadow-2xl overflow-y-auto transition-transform duration-300 ease-out ${
+        className={`details-drawer absolute right-0 top-0 h-full w-full sm:w-[420px] md:w-[520px] bg-dark-100 shadow-2xl overflow-y-auto transition-transform duration-300 ease-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         role="dialog"

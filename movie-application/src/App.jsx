@@ -33,6 +33,16 @@ const App = () => {
   const [isCreditsLoading, setIsCreditsLoading] = useState(false)
   const [flippedItemKey, setFlippedItemKey] = useState(null)
   const [lastRefreshTime, setLastRefreshTime] = useState(new Date())
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = localStorage.getItem('appTheme')
+      if (saved === 'light' || saved === 'dark') return saved
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches
+      return prefersLight ? 'light' : 'dark'
+    } catch {
+      return 'dark'
+    }
+  })
 
   // Abort controller for in-flight search
   const searchAbortRef = useRef(null)
@@ -920,11 +930,36 @@ const App = () => {
     }
   }, [selectedLanguages, selectedGenres, selectedYears, fetchMovies])
 
+  // Persist and apply theme class
+
+  useEffect(() => {
+    const body = document.body
+    if (theme === 'light') {
+      body.classList.add('light')
+    } else {
+      body.classList.remove('light')
+    }
+    try { localStorage.setItem('appTheme', theme) } catch {}
+  }, [theme])
+
+  const toggleTheme = useCallback(() => {
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'))
+  }, [])
+
   return (
     <main>
       <div className="pattern" />
       <div className='wrapper fade-in'>
         <header>
+          <button
+            type="button"
+            className="theme-toggle"
+            aria-label="Toggle theme"
+            onClick={toggleTheme}
+            title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+          >
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
           <img 
             src="./C.png" 
             alt="Hero-Banner" 

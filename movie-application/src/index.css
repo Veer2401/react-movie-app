@@ -25,6 +25,7 @@
     font-family: "DM Sans", serif;
     font-optical-sizing: auto;
     background: #030014;
+    color: #e5e7eb;
   }
 
   h1 {
@@ -50,6 +51,82 @@
   header img {
     @apply w-full max-w-xs sm:max-w-sm md:max-w-lg h-auto object-contain mx-auto drop-shadow-md;
   }
+}
+
+/* Light theme overrides */
+.light {
+  background: #f7f7fb;
+  color: #0f172a;
+}
+
+.light main { background: #f7f7fb; }
+.light header img { filter: none; }
+.light h1, .light h2 { color: #0f172a; }
+.light .text-gradient { background: linear-gradient(to right, #0ea5e9, #0284c7); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* Components in light mode */
+.light .search { background: rgba(0,0,0,0.05); }
+.light .search input { color: #0f172a; }
+.light .placeholder-light-200::placeholder { color: #6b7280; }
+.light .suggestion-dropdown { background: #ffffff; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+.light .suggestion-item:hover { background: #0ea5e9; color: #fff; }
+
+.light .filter-button { background: rgba(0,0,0,0.06); }
+.light .filter-dropdown { background: #ffffff; border-color: rgba(0,0,0,0.08); }
+.light .filter-tab { color: rgba(15,23,42,0.6); }
+.light .filter-tab.active { color: #0f172a; border-color: #3b82f6; }
+.light .filter-option { color: #0f172a; }
+.light .checkmark { border-color: rgba(0,0,0,0.2); }
+.light .filter-header h3 { color: #0f172a; }
+.light .clear-filters-btn { color: #2563eb; }
+
+.light .movie-card { background: #ffffff; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04); }
+.light .movie-card h3 { color: #0f172a; }
+.light .movie-card .content span,
+.light .movie-card .content .lang,
+.light .movie-card .content .year,
+.light .movie-card .content .media-type { color: #334155; }
+.light .netflix-badge { background: #e50914; color: #fff; }
+.light .prime-badge { background: #0a84ff; color: #fff; }
+
+.light .error-container p { color: #b91c1c; }
+.light .no-results p { color: #334155; }
+
+.light .genre-icon { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.15); }
+.light .genre-icon:hover { background: rgba(0,0,0,0.06); }
+.light .genre-name { color: #0f172a; }
+
+/* Details Drawer light theme */
+.light .details-drawer { background: #ffffff; }
+.light .details-drawer .border-light-100\/10 { border-color: rgba(0,0,0,0.08); }
+.light .details-drawer h3, .light .details-drawer h4 { color: #0f172a; }
+.light .details-drawer p { color: #334155; }
+.light .details-drawer a { color: #0f172a; }
+.light .details-drawer a:hover { background: rgba(2,132,199,0.08); }
+.light .details-drawer .bg-light-100\/10 { background: rgba(0,0,0,0.06); }
+.light .details-drawer .hover\:bg-light-100\/20:hover { background: rgba(0,0,0,0.08); }
+
+/* Theme toggle button */
+.theme-toggle {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+.theme-toggle:hover { transform: scale(1.05); }
+.light .theme-toggle {
+  background: rgba(0,0,0,0.06);
+  color: #0f172a;
+  border: 1px solid rgba(0,0,0,0.12);
 }
 
 @layer components {
@@ -441,7 +518,16 @@
     }
 
     & .rating img {
-      @apply size-3 sm:size-4 object-contain;
+      @apply object-contain;
+      width: 1rem; /* 16px */
+      height: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      & .rating img {
+        width: 1.125rem; /* 18px */
+        height: 1.125rem;
+      }
     }
 
     & .rating p {
@@ -493,6 +579,14 @@
       box-shadow: 0 0 20px rgba(249, 115, 22, 0.1);
     }
   }
+
+/* Light mode adjustments for flip-back text */
+.light .flip-back .movie-card h3 { color: #0f172a; }
+.light .flip-back .movie-card p { color: #334155; }
+.light .flip-back .movie-card .content span,
+.light .flip-back .movie-card .content .lang,
+.light .flip-back .movie-card .content .year,
+.light .flip-back .movie-card .content .media-type { color: #334155; }
 
   /* removed in-app trailer panel styles */
 

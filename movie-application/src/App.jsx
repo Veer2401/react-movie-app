@@ -953,12 +953,19 @@ const App = () => {
         <header>
           <button
             type="button"
-            className="theme-toggle"
+            className="theme-toggle big-theme-toggle"
             aria-label="Toggle theme"
             onClick={toggleTheme}
             title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            style={{ marginTop: '32px' }}
           >
-            {theme === 'light' ? '🌙' : '☀️'}
+            {theme === 'light' ? (
+              // Show moon in light mode
+              <img src="/moon.svg" alt="Dark mode icon" style={{ width: '40px', height: '40px' }} />
+            ) : (
+              // Show light-mode.svg in dark mode (replaces sun.svg)
+              <img src="/light-mode.svg" alt="Light mode icon" style={{ width: '40px', height: '40px' }} />
+            )}
           </button>
           <img 
             src="./C.png" 
